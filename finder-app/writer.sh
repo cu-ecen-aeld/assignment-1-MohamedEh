@@ -4,15 +4,10 @@ f=${file##*/}
 dir="."
 dir+=${file%/*}
 if [ $# == "2" ];then
-	if [ !$(mkdir -p $dir) ];then
-		cd $dir
-		if [ !$(touch $f) ];then
-			echo $2 >> $f
-		fi
-	else
-		exit 2
-		
-	fi
+	mkdir -p $dir
+	cd $dir
+	touch $f
+	echo $2 >> $f
 else
 	exit 1
 
